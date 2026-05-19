@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE+SYNERGY | Corporate Renewable Energy Supply Scheme</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a5c38;
+    --green-mid: #2e8b57;
+    --green-light: #4caf80;
+    --green-accent: #66d49a;
+    --gold: #c8a84b;
+    --navy: #0d1f2d;
+    --navy-mid: #162736;
+    --white: #ffffff;
+    --off-white: #f5f7f5;
+    --gray: #e8ede9;
+    --text-dark: #1a2a1e;
+    --text-mid: #4a5e50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(13, 31, 45, 0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid rgba(102,212,154,0.15);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-accent));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 16px; color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .nav-logo-text span { color: var(--green-accent); }
+  .nav-logo-sub { font-size: 9px; color: rgba(255,255,255,0.5); font-weight: 300; letter-spacing: 2px; }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-family: 'Montserrat', sans-serif; font-size: 12px;
+    font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: color .3s; padding: 4px 0;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--green-accent);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--green-accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--green-mid); color: var(--white) !important;
+    padding: 8px 20px !important; border-radius: 4px;
+    transition: background .3s !important;
+  }
+  .nav-cta:hover { background: var(--green-dark) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 40%, #0f2d1a 100%);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding-top: 70px;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.05;
+    background-image: 
+      linear-gradient(rgba(102,212,154,.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(102,212,154,.6) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-circle {
+    position: absolute; border-radius: 50%; opacity: 0.06;
+  }
+  .hero-circle-1 { width: 600px; height: 600px; background: var(--green-mid); right: -100px; top: -100px; }
+  .hero-circle-2 { width: 400px; height: 400px; background: var(--green-accent); right: 200px; bottom: -50px; }
+  .hero-circle-3 { width: 200px; height: 200px; background: var(--gold); left: 10%; bottom: 20%; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 8%;
+    max-width: 800px;
+    animation: fadeUp .9s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(102,212,154,0.12); border: 1px solid rgba(102,212,154,0.3);
+    border-radius: 30px; padding: 6px 16px; margin-bottom: 28px;
+    color: var(--green-accent); font-size: 11px; letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase;
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 800; color: var(--white);
+    line-height: 1.15; margin-bottom: 20px;
+  }
+  .hero-title span { color: var(--green-accent); }
+
+  .hero-subtitle {
+    font-size: 1.1rem; color: rgba(255,255,255,0.65);
+    line-height: 1.8; margin-bottom: 40px; max-width: 580px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-bottom: 44px;
+    flex-wrap: wrap;
+  }
+  .hero-stat .num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem; font-weight: 800; color: var(--green-accent);
+    line-height: 1;
+  }
+  .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 4px; }
+
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green-mid); color: var(--white);
+    padding: 14px 32px; border-radius: 4px; text-decoration: none;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    transition: all .3s; border: 2px solid var(--green-mid);
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,139,87,0.4); }
+
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 14px 32px; border-radius: 4px; text-decoration: none;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    transition: all .3s; border: 2px solid rgba(255,255,255,0.3);
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--green-accent); color: var(--green-accent); }
+
+  /* ── SECTION BASE ── */
+  section { scroll-margin-top: 70px; }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--green-mid); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; width: 30px; height: 2px; background: var(--green-mid); }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800; color: var(--text-dark);
+    line-height: 1.2; margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 1rem; color: var(--text-mid); line-height: 1.8;
+    max-width: 620px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 100px 8%;
+    background: var(--white);
+  }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center; margin-top: 60px;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+  .about-card {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--green-dark) 100%);
+    border-radius: 12px; padding: 48px 40px;
+    color: var(--white); position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(102,212,154,0.1);
+  }
+  .about-card-icon { font-size: 48px; margin-bottom: 20px; }
+  .about-card h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 1.5rem;
+    font-weight: 700; margin-bottom: 12px;
+  }
+  .about-card p { font-size: .95rem; opacity: .8; line-height: 1.8; }
+
+  .about-floating {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--gold); border-radius: 10px;
+    padding: 20px 28px; text-align: center;
+  }
+  .about-floating .num {
+    font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: var(--navy);
+  }
+  .about-floating .lbl { font-size: 10px; color: var(--navy); opacity: .7; letter-spacing: 1px; }
+
+  .about-content .values {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
+  }
+  .value-item {
+    background: var(--off-white); border-radius: 8px; padding: 20px;
+    border-left: 3px solid var(--green-mid);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .value-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+  .value-item h4 {
+    font-family: 'Montserrat', sans-serif; font-size: .85rem;
+    font-weight: 700; color: var(--green-dark); margin-bottom: 6px;
+  }
+  .value-item p { font-size: .83rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── OBJECTIVES ── */
+  #objectives {
+    padding: 100px 8%;
+    background: var(--navy);
+    position: relative; overflow: hidden;
+  }
+  #objectives::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(46,139,87,0.15));
+  }
+
+  #objectives .section-label { color: var(--green-accent); }
+  #objectives .section-label::before { background: var(--green-accent); }
+  #objectives .section-title { color: var(--white); }
+  #objectives .section-desc { color: rgba(255,255,255,0.6); }
+
+  .obj-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px;
+  }
+  .obj-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(102,212,154,0.15);
+    border-radius: 12px; padding: 36px 28px;
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .obj-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--green-accent);
+    transition: height .4s;
+  }
+  .obj-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+  .obj-card:hover::before { height: 100%; }
+  .obj-card .icon { font-size: 36px; margin-bottom: 20px; }
+  .obj-card h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .obj-card p { font-size: .88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  /* ── SERVICES ── */
+  #services {
+    padding: 100px 8%;
+    background: var(--off-white);
+  }
+
+  .services-intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px;
+  }
+  .service-card {
+    background: var(--white); border-radius: 12px;
+    padding: 36px 28px; border: 1px solid var(--gray);
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .service-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--green-mid), var(--green-accent));
+    transform: scaleX(0); transition: transform .4s;
+  }
+  .service-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.1); transform: translateY(-4px); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    width: 60px; height: 60px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 24px;
+  }
+  .service-card h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 1.05rem;
+    font-weight: 700; color: var(--text-dark); margin-bottom: 12px;
+  }
+  .service-card p { font-size: .88rem; color: var(--text-mid); line-height: 1.7; }
+
+  .tariff-box {
+    background: linear-gradient(135deg, var(--green-dark), var(--navy));
+    border-radius: 12px; padding: 36px; margin-top: 40px; color: var(--white);
+  }
+  .tariff-box h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 28px; color: var(--green-accent);
+  }
+  .tariff-table { width: 100%; border-collapse: collapse; }
+  .tariff-table th {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5);
+    padding: 10px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .tariff-table td {
+    padding: 14px 16px; font-size: .9rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.85);
+  }
+  .tariff-table tr:last-child td { border-bottom: none; }
+  .tariff-table td:first-child { color: rgba(255,255,255,0.5); font-size: .82rem; }
+  .badge-green {
+    background: rgba(102,212,154,0.15); color: var(--green-accent);
+    padding: 3px 10px; border-radius: 20px; font-size: .8rem; font-weight: 600;
+  }
+  .badge-yellow {
+    background: rgba(200,168,75,0.15); color: var(--gold);
+    padding: 3px 10px; border-radius: 20px; font-size: .8rem; font-weight: 600;
+  }
+
+  /* ── PROJECTS ── */
+  #projects {
+    padding: 100px 8%;
+    background: var(--white);
+  }
+
+  .projects-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px;
+  }
+  .project-card {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--gray); transition: all .3s;
+  }
+  .project-card:hover { box-shadow: 0 20px 56px rgba(0,0,0,.12); transform: translateY(-4px); }
+
+  .project-header {
+    padding: 36px 32px;
+    position: relative; overflow: hidden;
+  }
+  .project-header.cress { background: linear-gradient(135deg, var(--green-dark), #1a4d2e); }
+  .project-header.sinaran { background: linear-gradient(135deg, var(--navy), #1a2e4d); }
+  .project-header::before {
+    content: ''; position: absolute; right: -30px; top: -30px;
+    width: 150px; height: 150px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .project-tag {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .tag-domestic { background: rgba(102,212,154,0.2); color: var(--green-accent); }
+  .tag-export { background: rgba(200,168,75,0.2); color: var(--gold); }
+  .project-header h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 1.5rem;
+    font-weight: 800; color: var(--white); margin-bottom: 8px;
+  }
+  .project-header p { font-size: .9rem; color: rgba(255,255,255,0.6); }
+
+  .project-body { padding: 32px; background: var(--white); }
+  .project-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;
+  }
+  .pstat { text-align: center; padding: 16px; background: var(--off-white); border-radius: 8px; }
+  .pstat .num {
+    font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 800;
+    color: var(--green-dark);
+  }
+  .pstat .lbl { font-size: .75rem; color: var(--text-mid); margin-top: 4px; letter-spacing: .5px; }
+  .project-list { list-style: none; }
+  .project-list li {
+    padding: 8px 0; font-size: .88rem; color: var(--text-mid);
+    border-bottom: 1px solid var(--gray); display: flex; align-items: flex-start; gap: 10px;
+  }
+  .project-list li:last-child { border-bottom: none; }
+  .project-list li::before { content: '✓'; color: var(--green-mid); font-weight: 700; flex-shrink: 0; }
+
+  /* ── TIMELINE ── */
+  .timeline-section {
+    background: var(--off-white); padding: 60px 8% 100px;
+  }
+  .timeline-section h3 {
+    font-family: 'Montserrat', sans-serif; font-size: 1.3rem;
+    font-weight: 700; color: var(--text-dark); margin-bottom: 40px; text-align: center;
+  }
+  .timeline {
+    display: flex; gap: 0; position: relative; overflow-x: auto;
+    padding-bottom: 20px;
+  }
+  .timeline::before {
+    content: ''; position: absolute; top: 28px; left: 5%; right: 5%;
+    height: 2px; background: var(--gray); z-index: 0;
+  }
+  .tl-step {
+    flex: 1; min-width: 130px; text-align: center; position: relative; z-index: 1;
+    padding: 0 8px;
+  }
+  .tl-dot {
+    width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .tl-dot.done { background: var(--green-mid); color: var(--white); }
+  .tl-dot.active { background: var(--green-accent); color: var(--navy); box-shadow: 0 0 0 6px rgba(102,212,154,0.2); }
+  .tl-dot.future { background: var(--white); border: 2px solid var(--gray); color: var(--text-mid); }
+  .tl-step h4 {
+    font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 4px;
+  }
+  .tl-step p { font-size: .72rem; color: var(--text-mid); }
+
+  /* ── PARTNERS ── */
+  #partners {
+    padding: 100px 8%;
+    background: var(--white);
+  }
+
+  .partners-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px;
+  }
+  .partner-card {
+    background: var(--off-white); border-radius: 12px; padding: 28px 20px;
+    text-align: center; border: 1px solid var(--gray);
+    transition: all .3s;
+  }
+  .partner-card:hover { border-color: var(--green-mid); background: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-3px); }
+  .partner-icon { font-size: 32px; margin-bottom: 12px; }
+  .partner-card h4 {
+    font-family: 'Montserrat', sans-serif; font-size: .85rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 6px;
+  }
+  .partner-card p { font-size: .78rem; color: var(--text-mid); line-height: 1.5; }
+  .partner-role {
+    display: inline-block; margin-top: 10px;
+    background: rgba(46,139,87,0.1); color: var(--green-dark);
+    padding: 2px 10px; border-radius: 20px; font-size: .72rem; font-weight: 700;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 60px 8% 30px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand p { font-size: .88rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-top: 16px; }
+  .footer-col h4 {
+    font-family: 'Montserrat', sans-serif; font-size: .8rem;
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--green-accent); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.5); text-decoration: none; font-size: .88rem;
+    transition: color .3s;
+  }
+  .footer-col ul li a:hover { color: var(--green-accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px; display: flex;
+    justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: .82rem; color: rgba(255,255,255,0.35); }
+
+  /* ── CONTACT STRIP ── */
+  .contact-strip {
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    padding: 80px 8%; text-align: center;
+  }
+  .contact-strip h2 {
+    font-family: 'Montserrat', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800; color: var(--white); margin-bottom: 16px;
+  }
+  .contact-strip p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 36px; }
+  .contact-strip .btn-white {
+    background: var(--white); color: var(--green-dark);
+    padding: 14px 40px; border-radius: 4px; text-decoration: none;
+    font-family: 'Montserrat', sans-serif; font-weight: 800;
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    transition: all .3s; display: inline-block;
+  }
+  .contact-strip .btn-white:hover { background: var(--off-white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE NAV ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); transition: all .3s; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .projects-grid { grid-template-columns: 1fr; }
+    .obj-grid, .services-grid { grid-template-columns: 1fr; }
+    .partners-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    <div>
+      <div class="nav-logo-text">RE<span>+</span>SYNERGY</div>
+      <div class="nav-logo-sub">SDN. BHD.</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-circle hero-circle-1"></div>
+  <div class="hero-circle hero-circle-2"></div>
+  <div class="hero-circle hero-circle-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇲🇾 CRESS — Suruhanjaya Tenaga Approved Scheme</div>
+    <h1 class="hero-title">
+      Powering Malaysia's<br><span>Green Energy Future</span>
+    </h1>
+    <p class="hero-subtitle">
+      A 5,000 MWp Agrivoltaic Solar Farm and 10,000 MWh Battery Energy Storage System delivering 100% renewable energy to corporate Malaysia and Singapore.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">5,000 MWp</div><div class="lbl">Total Solar Capacity</div></div>
+      <div class="hero-stat"><div class="num">10,000 MWh</div><div class="lbl">BESS Storage</div></div>
+      <div class="hero-stat"><div class="num">7 TWh</div><div class="lbl">Annual Generation</div></div>
+      <div class="hero-stat"><div class="num">2029</div><div class="lbl">Target COD</div></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">Explore Projects</a>
+      <a href="#about" class="btn-outline">Who We Are</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Us</div>
+  <h2 class="section-title">Local Expertise,<br>World-Class Partners</h2>
+  <p class="section-desc">RE Plus Synergy Sdn. Bhd. is a Special Purpose Vehicle formed to develop Malaysia's largest renewable energy project — backed by Fortune 500 companies and rooted in Malaysian expertise.</p>
+
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-card">
+        <div class="about-card-icon">☀️</div>
+        <h3>Sinaran Tenaga Hijau (STH)</h3>
+        <p>A 100% locally owned renewable energy developer established in 2022. STH is a participant of the Southern Johor Renewable Energy Corridor (SJREC), led by Permodalan Darul Takzim (PDT), a Johor GLC. The consortium is structured with STH holding 51%, CEIG at 30%, and Asia Energy at 19%.</p>
+      </div>
+      <div class="about-floating">
+        <div class="num">25yr</div>
+        <div class="lbl">Concession</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text-dark);margin-bottom:16px;">Our Leadership</h3>
+      <p style="color:var(--text-mid);line-height:1.8;font-size:.95rem;margin-bottom:24px;">STH is driven by experienced professionals with deep expertise across engineering, energy, corporate advisory, and governance — united in delivering Malaysia's most ambitious green energy initiative.</p>
+
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:32px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--off-white);border-radius:8px;">
+          <div style="font-size:28px;">👤</div>
+          <div>
+            <strong style="font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--text-dark);">Ken Hay</strong> — <em style="font-size:.82rem;color:var(--text-mid);">Managing Director</em>
+            <p style="font-size:.82rem;color:var(--text-mid);margin-top:4px;">Civil engineer, 24 years experience across USA, China, Singapore & Malaysia. Led KL118, Large Scale Solar, and CA-HSR projects.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--off-white);border-radius:8px;">
+          <div style="font-size:28px;">👤</div>
+          <div>
+            <strong style="font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--text-dark);">Maziyah Zin</strong> — <em style="font-size:.82rem;color:var(--text-mid);">CEO / Director of Corporate Affairs</em>
+            <p style="font-size:.82rem;color:var(--text-mid);margin-top:4px;">30+ years in corporate and legal advisory, government affairs, and company secretarial across energy, railways, and utilities.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--off-white);border-radius:8px;">
+          <div style="font-size:28px;">👤</div>
+          <div>
+            <strong style="font-family:'Montserrat',sans-serif;font-size:.9rem;color:var(--text-dark);">Dato' Ahmad Ghiti</strong> — <em style="font-size:.82rem;color:var(--text-mid);">Advisor</em>
+            <p style="font-size:.82rem;color:var(--text-mid);margin-top:4px;">43-year veteran of Malaysia's insurance industry. President of IBAM, Chairman of MITBA and CIIBA.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="values">
+        <div class="value-item">
+          <h4>🌱 Green Energy Pioneers</h4>
+          <p>Driving Malaysia's transition to 100% renewable energy through innovative solar and BESS solutions.</p>
+        </div>
+        <div class="value-item">
+          <h4>⚡ Sustainable Innovation</h4>
+          <p>Committed to cutting-edge agrivoltaic technology that combines energy and agriculture.</p>
+        </div>
+        <div class="value-item">
+          <h4>🌍 Environmental Stewardship</h4>
+          <p>Supporting Malaysia's NETR goal of 70% renewable energy by 2050.</p>
+        </div>
+        <div class="value-item">
+          <h4>🤝 Local Empowerment</h4>
+          <p>75% local workforce, SME participation, and technology transfer at the core of delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section id="objectives">
+  <div style="position:relative;z-index:2;">
+    <div class="section-label">Our Goals</div>
+    <h2 class="section-title">What We Set Out to Achieve</h2>
+    <p class="section-desc">Project CRESS and Project Sinaran are anchored by clear national, environmental, and economic objectives that benefit Malaysia and the region.</p>
+
+    <div class="obj-grid">
+      <div class="obj-card">
+        <div class="icon">🌞</div>
+        <h3>100% Green Energy Supply</h3>
+        <p>Produce and deliver fully renewable electricity to corporate offtakers 24 hours a day through solar generation and BESS-backed nighttime supply.</p>
+      </div>
+      <div class="obj-card">
+        <div class="icon">📋</div>
+        <h3>ESG Compliance Enablement</h3>
+        <p>Help Bursa-listed companies and MNCs meet mandatory ESG reporting, reduce carbon tax exposure, and qualify for Green SRI Sukuk financing incentives.</p>
+      </div>
+      <div class="obj-card">
+        <div class="icon">🇲🇾</div>
+        <h3>National Energy Transformation</h3>
+        <p>Advance Malaysia's NETR roadmap — targeting 70% renewable energy by 2050 — through one of the largest private-funded RE projects in the country.</p>
+      </div>
+      <div class="obj-card">
+        <div class="icon">💼</div>
+        <h3>Foreign Direct Investment</h3>
+        <p>Bring RM20–27 billion in FDI from global Fortune 500 partners with zero government funding, supporting Malaysia's DDI and FDI KPIs.</p>
+      </div>
+      <div class="obj-card">
+        <div class="icon">👷</div>
+        <h3>Jobs & Local Development</h3>
+        <p>Create 20,000–30,000 jobs with 75% local workforce, TVET and university sponsorship, and awarding 70% of works to local contractors and SMEs.</p>
+      </div>
+      <div class="obj-card">
+        <div class="icon">🌏</div>
+        <h3>ASEAN Regional Leadership</h3>
+        <p>Position Malaysia as a major green energy exporter to Singapore, underpin the ASEAN Power Grid, and materialize the Malaysia-Singapore Energy Exchange.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our Services</h2>
+    </div>
+    <p class="section-desc">From green energy supply to ESG advisory, CRESS delivers end-to-end renewable solutions for medium and high voltage corporate customers.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>24-Hour Green Energy Supply</h3>
+      <p>Uninterrupted 100% renewable electricity via solar during daylight and BESS storage after sunset — available to medium and high voltage customers with minimum 10,000 MWh/year offtake.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📜</div>
+      <h3>M-REC Certification</h3>
+      <p>Malaysian Renewable Energy Certificates (M-REC) provided free of charge with every energy supply contract, enabling companies to demonstrate verified green energy consumption for ESG reporting.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>ESG Compliance Support</h3>
+      <p>Support your company's ESG journey — from reducing Scope 2 emissions and carbon tax exposure, to qualifying for green financing incentives like Green SRI Sukuk at lower interest rates.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔋</div>
+      <h3>Battery Energy Storage (BESS)</h3>
+      <p>10,000 MWh integrated BESS ensures stable, dispatchable energy delivery around the clock — making renewable energy as reliable as conventional power for critical operations.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌾</div>
+      <h3>Agrivoltaic Development</h3>
+      <p>Optional agrivoltaic integration combines solar power generation with agricultural activities, supporting food security and maximising land use across the 3,000-acre development phases.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚀</div>
+      <h3>Power Purchase Agreement (PPA)</h3>
+      <p>25-year fixed-rate bilateral energy supply contract under the ST CRESS framework, providing long-term price certainty and regulatory security compared to monthly TNB tariff adjustments.</p>
+    </div>
+  </div>
+
+  <div class="tariff-box">
+    <h3>⚖️ STH vs TNB — Tariff Comparison</h3>
+    <table class="tariff-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>STH (CRESS)</th>
+          <th>TNB</th>
+          <th>Remark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tariff — MV</td><td><span class="badge-green">RM0.53–0.59</span></td><td>RM0.52–0.61</td><td>Inclusive of TPA (RM0.20)</td></tr>
+        <tr><td>Tariff — HV</td><td><span class="badge-green">RM0.53–0.59</span></td><td>RM0.60</td><td>Inclusive of TPA (RM0.20)</td></tr>
+        <tr><td>Contract Duration</td><td><span class="badge-green">25 years fixed</span></td><td>Monthly</td><td>STH guarantees tariff rate</td></tr>
+        <tr><td>M-REC</td><td>Free</td><td>Free</td><td>To meet ESG requirements</td></tr>
+        <tr><td>Availability</td><td>24 hours</td><td>24 hours</td><td>BESS covers after sunset</td></tr>
+        <tr><td>Sustainability</td><td><span class="badge-green">100% Green</span></td><td><span class="badge-yellow">Availability-based</span></td><td>Fully verified renewable energy</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Our Projects</div>
+  <h2 class="section-title">Transforming Energy<br>at Scale</h2>
+  <p class="section-desc">Two landmark renewable energy projects — one powering corporate Malaysia, one exporting clean energy to Singapore — united under a single development vision.</p>
+
+  <div class="projects-grid">
+    <!-- CRESS -->
+    <div class="project-card">
+      <div class="project-header cress">
+        <span class="project-tag tag-domestic">Domestic — Malaysia</span>
+        <h3>Project CRESS</h3>
+        <p>Corporate Renewable Energy Supply Scheme — Southern Johor Renewable Energy Corridor (SJREC)</p>
+      </div>
+      <div class="project-body">
+        <div class="project-stats">
+          <div class="pstat"><div class="num">5,000 MWp</div><div class="lbl">Solar Capacity</div></div>
+          <div class="pstat"><div class="num">10,000 MWh</div><div class="lbl">BESS Storage</div></div>
+          <div class="pstat"><div class="num">RM3.8B</div><div class="lbl">Phase 1 CAPEX</div></div>
+          <div class="pstat"><div class="num">7 TWh/yr</div><div class="lbl">Annual Generation</div></div>
+        </div>
+        <ul class="project-list">
+          <li>5 development phases, 3,000 acres per phase in Johor</li>
+          <li>COD: Early 2029 — 25-year concession with extension option</li>
+          <li>Access to 275kV transmission by PDT, Johor GLC</li>
+          <li>Minimum offtake 10,000 MWh/year — medium & high voltage only</li>
+          <li>Revenue estimated RM10.8 billion over concession period</li>
+          <li>Target: Data centers, banks, MNCs, manufacturers, RE100 companies</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SINARAN -->
+    <div class="project-card">
+      <div class="project-header sinaran">
+        <span class="project-tag tag-export">Export — Singapore</span>
+        <h3>Project Sinaran</h3>
+        <p>5,000 MWp Agrivoltaic Solar Farm — Kota Tinggi, Johor to Singapore via subsea cable</p>
+      </div>
+      <div class="project-body">
+        <div class="project-stats">
+          <div class="pstat"><div class="num">~15,000</div><div class="lbl">Acres, Kota Tinggi</div></div>
+          <div class="pstat"><div class="num">2,000 MW</div><div class="lbl">Interconnector</div></div>
+          <div class="pstat"><div class="num">RM27B</div><div class="lbl">Total CAPEX</div></div>
+          <div class="pstat"><div class="num">RM76B</div><div class="lbl">Total Revenue</div></div>
+        </div>
+        <ul class="project-list">
+          <li>First and largest Agrivoltaic project in Malaysia & Southeast Asia</li>
+          <li>Response to Singapore EMA RFP2 — up to 4GW by 2035</li>
+          <li>275kV HVAC line, 72km from Kota Tinggi to Pasir Gudang</li>
+          <li>4km subsea cable to Pulau Ponggol Barat, Singapore (co-developed with EDF-SP)</li>
+          <li>Importer: Sembcorp Utilities — 25-year B-O-T concession</li>
+          <li>30,000 jobs created — 75% local workforce; RM6B corporate tax contribution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <h3>📅 Project CRESS — Development Timeline</h3>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-dot done">✓</div>
+      <h4>Expression of Interest</h4>
+      <p>Q2 2026</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot active">★</div>
+      <h4>Final Submission</h4>
+      <p>Q3 2026</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot future">3</div>
+      <h4>ST Approval</h4>
+      <p>Q4 2026</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot future">4</div>
+      <h4>EIA, Permit & Survey</h4>
+      <p>Q1–Q2 2027</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot future">5</div>
+      <h4>Land Clearing</h4>
+      <p>Q3 2027</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot future">6</div>
+      <h4>License Award</h4>
+      <p>Q4 2027</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot future">7</div>
+      <h4>Solar Farm + BESS Construction</h4>
+      <p>2028</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot future">🏁</div>
+      <h4>Commercial Operation</h4>
+      <p>Early 2029</p>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="section-label">Our Partners</div>
+  <h2 class="section-title">A World-Class Consortium</h2>
+  <p class="section-desc">Project CRESS and Project Sinaran are backed by Fortune 500 companies, leading financial institutions, and trusted Malaysian government entities.</p>
+
+  <div class="partners-grid">
+    <div class="partner-card">
+      <div class="partner-icon">🏗️</div>
+      <h4>CEEC / CEIG</h4>
+      <p>China Energy Engineering Corporation — USD 60B revenue, USD 100B assets, 145,000 employees. Fortune Global 500 #256.</p>
+      <span class="partner-role">Lead Investor & EPC</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">⛽</div>
+      <h4>TotalEnergies</h4>
+      <p>Global energy major with 17GW renewables capacity, 9M customers in Europe, present in 60+ countries. No. 3 LNG operator worldwide.</p>
+      <span class="partner-role">Technical Partner</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">💰</div>
+      <h4>Macquarie</h4>
+      <p>Global infrastructure and financial services leader with extensive renewable energy investment experience across Asia-Pacific.</p>
+      <span class="partner-role">Financial Partner</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🏛️</div>
+      <h4>PDT (Permodalan Darul Takzim)</h4>
+      <p>Johor GLC leading the Southern Johor Renewable Energy Corridor (SJREC) and developing 275kV transmission infrastructure.</p>
+      <span class="partner-role">Grid Infrastructure</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🏦</div>
+      <h4>MBSB Bank</h4>
+      <p>A member of MBSB Group — financial advisory partner supporting project financing and banking arrangements.</p>
+      <span class="partner-role">Financial Adviser</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🦁</div>
+      <h4>Maybank</h4>
+      <p>Malaysia's largest financial institution, supporting CRESS project financing as a financial advisory and banking partner.</p>
+      <span class="partner-role">Financial Adviser</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">⚡</div>
+      <h4>Tenaga Nasional (TNB)</h4>
+      <p>Malaysia's national utility and grid operator, responsible for wheeling, system access, billing, and end-consumer supply under CRESS.</p>
+      <span class="partner-role">Grid Operator</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🔋</div>
+      <h4>MyBESS</h4>
+      <p>Battery Energy Storage System partner providing integrated BESS technology for round-the-clock green energy dispatch.</p>
+      <span class="partner-role">BESS Technology</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🌊</div>
+      <h4>Sembcorp</h4>
+      <p>Singapore's licensed electricity importer under EMA RFP2 — importing and distributing Project Sinaran's electricity to Singapore.</p>
+      <span class="partner-role">SG Importer</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🔌</div>
+      <h4>EDF / SP Group</h4>
+      <p>Co-developing the 2,000MW, 4km subsea interconnector linking Malaysia to Singapore's grid under the ASEAN Power Grid framework.</p>
+      <span class="partner-role">Subsea Cable</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">📋</div>
+      <h4>Suruhanjaya Tenaga (ST)</h4>
+      <p>Malaysia's Energy Commission — regulatory authority that initiated and governs the CRESS power supply scheme.</p>
+      <span class="partner-role">Regulator</span>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🏢</div>
+      <h4>Ditrolic Energy</h4>
+      <p>Strategic collaboration partner supporting the development and commercialisation of Project CRESS renewable energy supply.</p>
+      <span class="partner-role">Collaboration Partner</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-strip" id="contact">
+  <h2>Ready to Power Your Business with Green Energy?</h2>
+  <p>Join Malaysia's largest corporate renewable energy scheme. Lock in a 25-year fixed green tariff and achieve your ESG goals today.</p>
+  <a href="mailto:info@resynergy.com.my" class="btn-white">Get In Touch</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--green-mid),var(--green-accent));border-radius:50%;display:flex;align-items:center;justify-content:center;">🌿</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:var(--white);">RE<span style="color:var(--green-accent);">+</span>SYNERGY SDN. BHD.</div>
+      </div>
+      <p>Malaysia's premier Corporate Renewable Energy Supply Scheme developer — delivering 5,000 MWp of 100% green energy to corporate Malaysia and Singapore under the Suruhanjaya Tenaga CRESS framework.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#partners">Partners</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Projects</h4>
+      <ul>
+        <li><a href="#projects">Project CRESS (MY)</a></li>
+        <li><a href="#projects">Project Sinaran (SG)</a></li>
+        <li><a href="#services">Tariff Structure</a></li>
+        <li><a href="#services">M-REC Certificates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Johor, Malaysia</a></li>
+        <li><a href="mailto:info@resynergy.com.my">info@resynergy.com.my</a></li>
+        <li><a href="#">Suruhanjaya Tenaga CRESS</a></li>
+        <li><a href="#">Enquire as Offtaker</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 RE Plus Synergy Sdn. Bhd. | Prepared by Sinaran Tenaga Hijau Sdn. Bhd. | All rights reserved.</p>
+    <p style="color:rgba(255,255,255,0.2);">CONFIDENTIAL</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth nav highlight on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--green-accent)' : '';
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.obj-card, .service-card, .partner-card, .project-card, .value-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
